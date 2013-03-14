@@ -66,13 +66,15 @@
       (string/join "." (map delimit-str parts))
       (delimit-str table-name))))
 
+(def ^:dynamic *field-name-split-pattern* #"\.")
+
 (defn field-identifier [field]
   (cond
     (map? field) (map-val field)
     (string? field) field
     (= "*" (name field)) "*"
     :else (let [field-name (name field)
-                parts (string/split field-name #"\.")]
+                parts (string/split field-name *field-name-split-pattern*)]
             (if-not (next parts)
               (delimit-str field-name)
               (string/join "." (map delimit-str parts))))))
