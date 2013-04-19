@@ -454,7 +454,7 @@
         query))
     query))
 
-(defn exec
+(defn ^:dynamic exec
   "Execute a query map and return the results."
   [query]
   (let [query (apply-prepares query)
