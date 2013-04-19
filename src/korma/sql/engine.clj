@@ -73,7 +73,7 @@
     (map? field) (map-val field)
     (string? field) field
     (= "*" (name field)) "*"
-    :else (let [field-name (name field)
+    :else (let [field-name (utils/full-name field)
                 parts (string/split field-name *field-name-split-pattern*)]
             (if-not (next parts)
               (delimit-str field-name)
