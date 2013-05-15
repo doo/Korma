@@ -62,3 +62,12 @@
 
 (defn vconcat [v1 v2]
   (vec (concat v1 v2)))
+
+;;*****************************************************
+;; core-utils
+;;*****************************************************
+
+(defn full-name [keyword]
+  (if (namespace keyword)
+    (str (namespace keyword) "/" (name keyword))
+    (name keyword)))
